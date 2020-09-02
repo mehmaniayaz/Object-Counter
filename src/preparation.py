@@ -2,9 +2,9 @@ import os
 from pathlib import Path
 
 
-def train_valid_split_directory(dir_path):
-    """Split a folder containing classes and split an empty duplicate
-    with train and validation empty subfolder
+def empty_train_valid_split_directory(dir_path):
+    """Create an empty duplicate of a folder with class subdirectories
+    that has train and validation folders
     :param dir_path:data directory path that needs to be splitted
     :return:
     """
@@ -16,18 +16,21 @@ def train_valid_split_directory(dir_path):
     new_validation_path = new_dir_path / Path('validation')
     os.mkdir(new_train_path)
     os.mkdir(new_validation_path)
-    for sub_dir in os.listdir(dir_path):
-        os.mkdir(new_train_path / Path(sub_dir))
-        os.mkdir(new_validation_path / Path(sub_dir))
+
+    empty_folder_duplicate(dir_path,new_train_path)
+    empty_folder_duplicate(dir_path, new_validation_path)
 
 
 def empty_folder_duplicate(target_dir, dest_dir):
-    '''
-    target_dir = directory which holds image categories
-    dest_dir = directory which will hold simplified images in each category
-    '''
-    os.mkdir(Path(dest_dir))
-    class_names = list(os.listdir(Path(target_dir)))
+    """
+    Create an empty duplicate of the target_dir with at dest_dir
+    :param target_dir: Path of directory to duplicate from
+    :param dest_dir: Path of directory to duplicate to
+    :return:
+    """
+    if not os.path.exists(dest_dir):
+        os.mkdir(dest_dir)
+    class_names = list(os.listdir(target_dir))
     # we want to exclude any hidden folders
     class_names = [i for i in class_names if '.' not in i]
     for i in class_names:

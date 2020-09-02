@@ -18,10 +18,14 @@ class TestPreparation(unittest.TestCase):
         for i in range(10):
             os.mkdir(Path(self.data_dir / Path(str(i + 1))))
 
-    def test_train_valid_split_directory(self):
-        train_valid_split_directory(self.data_dir)
+    def test_empty_folder_duplicate(self):
+        empty_folder_duplicate(self.data_dir,self.new_data_dir)
+        self.assertEqual(len(os.listdir(self.data_dir)),len(os.listdir(self.new_data_dir)))
+
+    def test_empty_train_valid_split_directory(self):
+        empty_train_valid_split_directory(self.data_dir)
         split_path = Path('split_' + self.data_dir.name)
-        self.assertEqual(len(os.listdir(self.data_dir)), len(os.listdir(split_path/Path('train'))))
+        self.assertEqual(len(os.listdir(self.data_dir)), len(os.listdir(split_path / Path('train'))))
         self.assertEqual(len(os.listdir(self.data_dir)), len(os.listdir(split_path / Path('validation'))))
 
     def tearDown(self) -> None:

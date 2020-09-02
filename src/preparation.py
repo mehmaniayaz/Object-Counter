@@ -66,5 +66,6 @@ def resize_images(target_dir, dest_dir,target_size=255,image_format='.png'):
             data_reshaped = tf.image.resize(
                 img_array, size=[new_ro, new_col], method='bilinear')
             data = data_reshaped.numpy().astype('uint8')
-            im = Image.fromarray(data)
-            im.save(dest_dir / Path(img_name))
+            img_image = Image.fromarray(data)
+            img_image.save(dest_dir / Path(img_name))
+

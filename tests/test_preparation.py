@@ -16,11 +16,16 @@ class TestPreparation(unittest.TestCase):
         os.mkdir(self.data_dir)
         # we have 10 classes in this project
         for i in range(10):
-            os.mkdir(Path(self.data_dir / Path(str(i + 1))))
+            sub_dir_path = Path(self.data_dir / Path(str(i + 1)))
+            os.mkdir(sub_dir_path)
+            for img_name in range(10):
+                img_array = np.random.randint(255,size=(400,200,3)).astype('uint8')
+                img_image = Image.fromarray(img_array)
+                img_image.save(sub_dir_path / Path(str(img_name)+'.png'))
 
     def test_empty_folder_duplicate(self):
-        empty_folder_duplicate(self.data_dir,self.new_data_dir)
-        self.assertEqual(len(os.listdir(self.data_dir)),len(os.listdir(self.new_data_dir)))
+        empty_folder_duplicate(self.data_dir, self.new_data_dir)
+        self.assertEqual(len(os.listdir(self.data_dir)), len(os.listdir(self.new_data_dir)))
 
     def test_empty_train_valid_split_directory(self):
         empty_train_valid_split_directory(self.data_dir)

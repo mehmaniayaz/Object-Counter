@@ -33,6 +33,12 @@ class TestPreparation(unittest.TestCase):
         self.assertEqual(len(os.listdir(self.data_dir)), len(os.listdir(split_path / Path('train'))))
         self.assertEqual(len(os.listdir(self.data_dir)), len(os.listdir(split_path / Path('validation'))))
 
+    def test_move_images_train_validation_folders(self):
+        move_images_to_train_valid_split_folders()
+
+    def test_resize_images(self):
+        resize_images()
+
     def tearDown(self) -> None:
         shutil.rmtree(self.data_dir)
         shutil.rmtree(self.new_data_dir)

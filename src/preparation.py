@@ -40,7 +40,8 @@ def empty_folder_duplicate(target_dir, dest_dir):
     for i in class_names:
         os.mkdir(Path(dest_dir) / i)
 
-
+def move_images_to_train_valid_split_folders():
+    pass
 def resize_images(target_dir, dest_dir,target_size=255,image_format='.png'):
     """
     Take images from target_dir and paste resizes of it in dest_dir

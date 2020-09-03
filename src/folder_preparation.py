@@ -90,10 +90,12 @@ def clean_list(img_list):
     return img_list
 
 
-def resize_and_move_images_to_train_val_folders(target_dir, dest_dir, split_ratio=0.1):
+def resize_and_move_images_to_train_val_folders(target_dir, dest_dir, split_ratio=0.1,
+                                                image_format='.png',target_size=255):
     """
     resize images and then move them to a dest_dir directorty where two train and validation
     subfolders exist
+    :param image_format:
     :param target_dir: directory from each data is supposed to be extracted
     :param dest_dir: directory to which data is supposed to be moved
     :param split_ratio: validation to training ratio size (for each class independently implemented)
@@ -103,12 +105,12 @@ def resize_and_move_images_to_train_val_folders(target_dir, dest_dir, split_rati
     empty_train_valid_split_directory(target_dir)
     for sub_dir in os.listdir(target_dir):
         all_imgs = os.listdir(target_dir/sub_dir)
-        train_list = random.choice(all_imgs, int(split_ratio * len(all_imgs)))
+        train_list = random.sample(all_imgs, k=int((1-split_ratio) * len(all_imgs)))
         validation_list = [i for i in all_imgs if i not in train_list]
         train_list = clean_list(train_list)
         validation_list = clean_list(validation_list)
-        resize_images(target_dir=target_dir/sub_dir,dest_dir=dest_dir/Path('train')/sub_dir,target_size=255,
-                      image_format='.png',img_list=train_list)
-        resize_images(target_dir=target_dir/sub_dir,dest_dir=dest_dir/Path('validation')/sub_dir,target_size=255,
-                      image_format='.png',img_list=validation_list)
+        resize_images(target_dir=target_dir/sub_dir,dest_dir=dest_dir/Path('train')/sub_dir,target_size=target_size,
+                      image_format=image_format,img_list=train_list)
+        resize_images(target_dir=target_dir/sub_dir,dest_dir=dest_dir/Path('validation')/sub_dir,target_size=target_size,
+                      image_format=image_format,img_list=validation_list)
 

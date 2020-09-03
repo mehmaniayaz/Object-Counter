@@ -35,9 +35,6 @@ class TestPreparation(unittest.TestCase):
         self.assertEqual(len(os.listdir(self.data_dir)), len(os.listdir(split_path / Path('validation'))))
         shutil.rmtree(self.new_data_dir)
 
-    def test_move_images_train_validation_folders(self):
-        move_images_to_train_valid_split_folders()
-
     def test_resize_images(self):
         empty_train_valid_split_directory(self.data_dir)
         resize_images(target_dir=self.data_dir / Path('2'), dest_dir=self.new_data_dir / Path('train/2'),
@@ -49,8 +46,14 @@ class TestPreparation(unittest.TestCase):
         shutil.rmtree(self.new_data_dir)
 
     def test_move_resized_images_to_train_val_folders(self):
-        resize_and_move_images_to_train_val_folders(target_dir=self.data_dir, dest_dir=self.new_data_dir,
-                                                    split_ratio=0.1, target_size=255, image_format='.png')
+        resize_and_move_images_to_train_val_folders(target_dir=self.data_dir,dest_dir=self.new_data_dir,
+                                                    split_ratio=0.1)
+        cat_3_true_length = int((1-0.1)*len(os.listdir(self.data_dir/Path('3'))))
+        cat_3_calculated_length = len(os.listdir(self.new_data_dir/Path('train/3')))
+
+        self.assertEqual(cat_3_calculated_length,cat_3_true_length)
+        shutil.rmtree(self.new_data_dir)
+
 
     def test_clean_list(self):
         test_list = ['a.png', '.example', 'b.png']

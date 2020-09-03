@@ -99,6 +99,7 @@ def resize_and_move_images_to_train_val_folders(target_dir, dest_dir, split_rati
     :param split_ratio: validation to training ratio size (for each class independently implemented)
     :return: 
     """
+
     empty_train_valid_split_directory(target_dir)
     for sub_dir in os.listdir(target_dir):
         all_imgs = os.listdir(target_dir/sub_dir)
@@ -106,3 +107,8 @@ def resize_and_move_images_to_train_val_folders(target_dir, dest_dir, split_rati
         validation_list = [i for i in all_imgs if i not in train_list]
         train_list = clean_list(train_list)
         validation_list = clean_list(validation_list)
+        resize_images(target_dir=target_dir/sub_dir,dest_dir=dest_dir/Path('train')/sub_dir,target_size=255,
+                      image_format='.png',img_list=train_list)
+        resize_images(target_dir=target_dir/sub_dir,dest_dir=dest_dir/Path('validation')/sub_dir,target_size=255,
+                      image_format='.png',img_list=validation_list)
+

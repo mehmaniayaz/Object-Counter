@@ -21,7 +21,7 @@ def empty_train_valid_split_directory(dir_path):
     os.mkdir(new_train_path)
     os.mkdir(new_validation_path)
 
-    empty_folder_duplicate(dir_path,new_train_path)
+    empty_folder_duplicate(dir_path, new_train_path)
     empty_folder_duplicate(dir_path, new_validation_path)
 
 
@@ -40,9 +40,12 @@ def empty_folder_duplicate(target_dir, dest_dir):
     for i in class_names:
         os.mkdir(Path(dest_dir) / i)
 
+
 def move_images_to_train_valid_split_folders():
     pass
-def resize_images(target_dir, dest_dir,target_size=255,image_format='.png'):
+
+
+def resize_images(target_dir, dest_dir, target_size=255, image_format='.png'):
     """
     Take images from target_dir and paste resizes of it in dest_dir
     :param target_dir: Path for target directory containing original images
@@ -52,21 +55,21 @@ def resize_images(target_dir, dest_dir,target_size=255,image_format='.png'):
     :param image_format: format of the original images
     :return:
     """
-    for img_name in os.listdir(target_dir):
-        if 'png' in img_name:
-            image = Image.open(target_dir / Path(img_name))
-            img_array = asarray(image)
-            [ro, col, ch] = img_array.shape
+    for sub_dir in os.listdir(target_dir):
+        for img_name in os.listdir(target_dir / sub_dir):
+            if image_format in img_name:
+                image = Image.open(target_dir / sub_dir / Path(img_name))
+                img_array = asarray(image)
+                [ro, col, ch] = img_array.shape
 
-            if ro > col:
-                new_ro = target_size
-                new_col = int(np.ceil(col / ro * target_size))
-            else:
-                new_col = target_size
-                new_ro = int(np.ceil(ro / col * new_col))
-            data_reshaped = tf.image.resize(
-                img_array, size=[new_ro, new_col], method='bilinear')
-            data = data_reshaped.numpy().astype('uint8')
-            img_image = Image.fromarray(data)
-            img_image.save(dest_dir / Path(img_name))
-
+                if ro > col:
+                    new_ro = target_size
+                    new_col = int(np.ceil(col / ro * target_size))
+                else:
+                    new_col = target_size
+                    new_ro = int(np.ceil(ro / col * new_col))
+                data_reshaped = tf.image.resize(
+                    img_array, size=[new_ro, new_col], method='bilinear')
+                data = data_reshaped.numpy().astype('uint8')
+                img_image = Image.fromarray(data)
+                img_image.save(dest_dir / sub_dir / Path(img_name))

@@ -1,8 +1,10 @@
 import unittest
 import unittest
 from src.data_augmentation import *
+from src.folder_preparation import *
 import shutil
 import random
+
 
 class TestDataAugmentation(unittest.TestCase):
     def setUp(self) -> None:
@@ -24,14 +26,27 @@ class TestDataAugmentation(unittest.TestCase):
                 img_image = Image.fromarray(img_array)
                 img_image.save(sub_dir_path / Path(str(img_name) + '.png'))
 
+        resize_and_move_images_to_train_val_folders(target_dir=self.data_dir, dest_dir=self.new_data_dir,
+                                                    split_ratio=0.1)
+
     def test_stitch_two_images(self):
-        image_1_2 = stitch_two_images(image1=,image2=)
+        dir_1 = self.new_data_dir / Path('train/1')
+        dir_2 = self.new_data_dir / Path('train/2')
+        image_1 = Image.open(dir_1 / Path(random.choice(os.listdir(dir_1))))
+        image_2 = Image.open(dir_2 / Path(random.choice(os.listdir(dir_2))))
+
+        image_1_2 = stitch_two_images(image1=image_1, image2=image_2)
+        h1, w1, c1 = asarray(image_1).shape
+        h12, w12, c12 = asarray(image_1_2).shape
+        self.assertEquals((2 * h1, w1, c1), (h12, w12, c12))
 
     def test_stitch_all_images_in_two_folders(self):
-        stitch_all_images_in_two_folders(dir_1=,dir_2=,dir_target=)
+        pass
+        # stitch_all_images_in_two_folders(dir_1=,dir_2=,dir_target=)
 
     def test_stitch_all_classes_in_root_directory(self):
-        stitch_all_classes_in_root_directory(root_dir = self.new_data_dir/Path('train'))
+        pass
+        # stitch_all_classes_in_root_directory(root_dir = self.new_data_dir/Path('train'))
 
     def tearDown(self) -> None:
         shutil.rmtree(self.data_dir)

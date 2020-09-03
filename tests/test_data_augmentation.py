@@ -54,8 +54,12 @@ class TestDataAugmentation(unittest.TestCase):
 
     def test_stitch_all_classes_in_root_directory(self):
         stitch_all_classes_in_root_directory(root_dir=self.new_data_dir / Path('train'))
+        dir_1 = self.new_data_dir / Path('train/1')
+        dir_2 = self.new_data_dir / Path('train/2')
+        dir1_imgs = clean_list(os.listdir(dir_1))
+        dir2_imgs = clean_list(os.listdir(dir_2))
+        self.assertEqual(len(dir2_imgs),len(dir1_imgs)*len(dir1_imgs)+len(dir1_imgs))
         shutil.rmtree(self.new_data_dir)
 
     def tearDown(self) -> None:
         shutil.rmtree(self.data_dir)
-        shutil.rmtree(self.new_data_dir)

@@ -40,6 +40,7 @@ class TestDataAugmentation(unittest.TestCase):
         h12, w12, c12 = asarray(image_1_2).shape
         self.assertEquals((2 * h1, w1, c1), (h12, w12, c12))
 
+
     def test_stitch_all_images_in_two_folders(self):
         dir_1 = self.new_data_dir / Path('train/1')
         dir_2 = self.new_data_dir / Path('train/2')
@@ -50,9 +51,11 @@ class TestDataAugmentation(unittest.TestCase):
         dir1_imgs = clean_list(os.listdir(dir_1))
         dir2_imgs = clean_list(os.listdir(dir_2))
         self.assertEqual(len(all_target_imgs),len(dir1_imgs)*len(dir2_imgs)+len(all_target_ims_orig))
+        shutil.rmtree(self.new_data_dir)
 
     def test_stitch_all_classes_in_root_directory(self):
         stitch_all_classes_in_root_directory(root_dir = self.new_data_dir/Path('train'))
+        shutil.rmtree(self.new_data_dir)
 
     def tearDown(self) -> None:
         shutil.rmtree(self.data_dir)

@@ -50,12 +50,13 @@ def stitch_all_classes_in_root_directory(root_dir):
     :return: 
     """
 
+    #reminder that class names need to be numbers for this function to work
     sub_dirs = os.listdir(root_dir)
 
     for sub_dir1 in sub_dirs:
         path_sub_dir1 = root_dir / Path(sub_dir1)
         for sub_dir2 in sub_dirs:
             path_sub_dir2 = root_dir / Path(sub_dir2)
-            if sub_dir1 != sub_dir2:
+            if (sub_dir1 != sub_dir2) and (int(sub_dir1) + int(sub_dir2)<=np.max(list(map(int,sub_dirs)))):
                 target_dir = root_dir / Path(str(int(sub_dir1) + int(sub_dir2)))
                 stitch_all_images_in_two_folders(path_sub_dir1, path_sub_dir2, target_dir)

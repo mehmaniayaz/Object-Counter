@@ -45,6 +45,8 @@ def move_images_to_train_valid_split_folders():
     pass
 
 
+#Since resize_images moves images from one folder to another (as part of data size
+#reduction we keep it in the folder_preparation folder.
 def resize_images(target_dir, dest_dir, target_size=255, image_format='.png'):
     """
     Take images from target_dir and paste resizes of it in dest_dir

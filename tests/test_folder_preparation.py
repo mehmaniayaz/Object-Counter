@@ -1,5 +1,5 @@
 import unittest
-from src.preparation import *
+from src.folder_preparation import *
 import shutil
 import random
 
@@ -45,6 +45,7 @@ class TestPreparation(unittest.TestCase):
         random_img_dir = self.new_data_dir / Path(random.choice(['train'])) / Path(str(np.random.randint(1, 10)))
         random_img = Image.open(random_img_dir / Path(random.choice(os.listdir(random_img_dir))))
         self.assertEqual(np.max(asarray(random_img).shape), 255)
+        shutil.rmtree(self.new_data_dir)
 
     def tearDown(self) -> None:
         shutil.rmtree(self.data_dir)

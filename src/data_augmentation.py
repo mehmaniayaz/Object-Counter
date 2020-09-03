@@ -6,6 +6,7 @@ from numpy import asarray
 import numpy as np
 import random
 from keras.preprocessing.image import img_to_array
+from src.folder_preparation import clean_list
 
 
 def stitch_two_images(image1, image2):
@@ -21,3 +22,22 @@ def stitch_two_images(image1, image2):
     img_array_1_2 = np.concatenate((img_array1, img_array2), axis=0)
     img_1_2 = Image.fromarray(img_array_1_2.astype('uint8'))
     return img_1_2
+
+
+def stitch_all_images_in_two_folders(dir_1, dir_2, dir_target):
+    """
+    Stich all images of two directories (dire_1 and dir_2) and put the results in dir_target
+    :param dir_1: Path first directory to extract images from
+    :param dir_2: Path second directory to extract images from
+    :param dir_target: Path target directory to input stitched images into
+    :return: None stiched images will appear in dir_target
+    """
+    imgs_1 = clean_list(os.listdir(dir_1))
+    imgs_2 = clean_list(os.listdir(dir_2))
+
+    for img_1 in imgs_1:
+        for img_2 in imgs_2:
+            PIL_img_1 = Image.open(dir_1 / img_1)
+            PIL_img_2 = Image.open(dir_2 / img_2)
+            img_1_2 = stitch_two_images(image1=PIL_img_1, image2=PIL_img_2)
+            img_1_2.save(os.path.splitext(img_1)[0] + '__' + os.path.splitext(img_2)[0] + '.png')

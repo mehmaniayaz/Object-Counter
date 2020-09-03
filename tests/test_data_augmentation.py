@@ -41,8 +41,10 @@ class TestDataAugmentation(unittest.TestCase):
         self.assertEquals((2 * h1, w1, c1), (h12, w12, c12))
 
     def test_stitch_all_images_in_two_folders(self):
-        pass
-        # stitch_all_images_in_two_folders(dir_1=,dir_2=,dir_target=)
+        dir_1 = self.new_data_dir / Path('train/1')
+        dir_2 = self.new_data_dir / Path('train/2')
+        dir_target = self.new_data_dir / Path('train/3')
+        stitch_all_images_in_two_folders(dir_1=dir_1,dir_2=dir_2,dir_target=dir_target)
 
     def test_stitch_all_classes_in_root_directory(self):
         pass

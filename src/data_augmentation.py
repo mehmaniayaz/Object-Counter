@@ -37,7 +37,7 @@ def stitch_all_images_in_two_folders(dir_1, dir_2, dir_target):
 
     for img_1 in imgs_1:
         for img_2 in imgs_2:
-            if ('stiched' not in img_1) and ('stitched' not in img_2):
+            if ('stitched' not in img_1) and ('stitched' not in img_2):
                 PIL_img_1 = Image.open(dir_1 / img_1)
                 PIL_img_2 = Image.open(dir_2 / img_2)
                 img_1_2 = stitch_two_images(image1=PIL_img_1, image2=PIL_img_2)

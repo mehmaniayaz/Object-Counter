@@ -40,12 +40,16 @@ class TestPreparation(unittest.TestCase):
 
     def test_resize_images(self):
         empty_train_valid_split_directory(self.data_dir)
-        resize_images(target_dir=self.data_dir, dest_dir=self.new_data_dir / Path('train'), target_size=255,
+        resize_images(target_dir=self.data_dir/Path('2'), dest_dir=self.new_data_dir / Path('train/2'), target_size=255,
                       image_format='.png')
-        random_img_dir = self.new_data_dir / Path(random.choice(['train'])) / Path(str(np.random.randint(1, 10)))
+        random_img_dir = self.new_data_dir / Path('train/2')
         random_img = Image.open(random_img_dir / Path(random.choice(os.listdir(random_img_dir))))
         self.assertEqual(np.max(asarray(random_img).shape), 255)
         shutil.rmtree(self.new_data_dir)
+
+    def test_move_resized_images_to_train_val_folders(self):
+        resize_and_move_images_to_train_val_folders(target_dir=self.data_dir, dest_dir=self.new_data_dir,
+                                                    split_ratio=0.1,target_size=255,image_format='.png')
 
     def tearDown(self) -> None:
         shutil.rmtree(self.data_dir)

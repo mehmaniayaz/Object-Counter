@@ -40,4 +40,22 @@ def stitch_all_images_in_two_folders(dir_1, dir_2, dir_target):
             PIL_img_1 = Image.open(dir_1 / img_1)
             PIL_img_2 = Image.open(dir_2 / img_2)
             img_1_2 = stitch_two_images(image1=PIL_img_1, image2=PIL_img_2)
-            img_1_2.save(dir_target/Path(os.path.splitext(img_1)[0] + '__' + os.path.splitext(img_2)[0] + '.png'))
+            img_1_2.save(dir_target / Path(os.path.splitext(img_1)[0] + '__' + os.path.splitext(img_2)[0] + '.png'))
+
+
+def stitch_all_classes_in_root_directory(root_dir):
+    """
+
+    :param root_dir: Path directory which contains all classes
+    :return: 
+    """
+
+    sub_dirs = os.listdir(root_dir)
+
+    for sub_dir1 in sub_dirs:
+        path_sub_dir1 = root_dir / Path(sub_dir1)
+        for sub_dir2 in sub_dirs:
+            path_sub_dir2 = root_dir / Path(sub_dir2)
+            if sub_dir1 != sub_dir2:
+                target_dir = root_dir / Path(str(int(sub_dir1) + int(sub_dir2)))
+                stitch_all_images_in_two_folders(path_sub_dir1, path_sub_dir2, target_dir)

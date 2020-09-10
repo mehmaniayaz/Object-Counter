@@ -7,6 +7,7 @@ import numpy as np
 import random
 from keras.preprocessing.image import img_to_array
 from src.folder_preparation import clean_list
+from tqdm import tqdm
 
 
 def stitch_two_images(image1, image2):
@@ -40,7 +41,8 @@ def stitch_all_images_in_two_folders(dir_1, dir_2, dir_target):
                 PIL_img_1 = Image.open(dir_1 / img_1)
                 PIL_img_2 = Image.open(dir_2 / img_2)
                 img_1_2 = stitch_two_images(image1=PIL_img_1, image2=PIL_img_2)
-                img_1_2.save(dir_target / Path('stitched_' + os.path.splitext(img_1)[0] + '__' + os.path.splitext(img_2)[0] + '.png'))
+                img_1_2.save(dir_target / Path(
+                    'stitched_' + os.path.splitext(img_1)[0] + '__' + os.path.splitext(img_2)[0] + '.png'))
 
 
 def stitch_all_classes_in_root_directory(root_dir):
@@ -52,9 +54,12 @@ def stitch_all_classes_in_root_directory(root_dir):
     # reminder that class names need to be numbers for this function to work
     sub_dirs = clean_list(os.listdir(root_dir))
 
-    for sub_dir1 in sub_dirs:
+    for sub_dir1 in tqdm(sub_dirs):
         path_sub_dir1 = root_dir / Path(sub_dir1)
-        for sub_dir2 in sub_dirs:
+        for sub_dir2 in tqdm(sub_dirs):
+            print('sub_dir1: ', sub_dir1)
+            print('sub_dir2: ', sub_dir2)
+            print('------------------------')
             path_sub_dir2 = root_dir / Path(sub_dir2)
             if int(sub_dir1) + int(sub_dir2) <= np.max(list(map(int, sub_dirs))):
                 target_dir = root_dir / Path(str(int(sub_dir1) + int(sub_dir2)))

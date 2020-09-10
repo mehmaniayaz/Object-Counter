@@ -18,7 +18,6 @@ def stitch_two_images(image1, image2):
     """
     img_array1 = img_to_array(image1)
     img_array2 = img_to_array(image2)
-
     img_array_1_2 = np.concatenate((img_array1, img_array2), axis=0)
     img_1_2 = Image.fromarray(img_array_1_2.astype('uint8'))
     return img_1_2
@@ -51,7 +50,7 @@ def stitch_all_classes_in_root_directory(root_dir):
     """
 
     # reminder that class names need to be numbers for this function to work
-    sub_dirs = os.listdir(root_dir)
+    sub_dirs = clean_list(os.listdir(root_dir))
 
     for sub_dir1 in sub_dirs:
         path_sub_dir1 = root_dir / Path(sub_dir1)

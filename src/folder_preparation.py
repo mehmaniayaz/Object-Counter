@@ -67,12 +67,18 @@ def resize_images(target_dir, dest_dir, target_size=255, image_format='.png', im
             if ro > col:
                 new_ro = target_size
                 new_col = int(np.ceil(col / ro * target_size))
+                data_reshaped = tf.image.resize(
+                    img_array, size=[new_ro, new_col], method='bilinear')
+                data = data_reshaped.numpy().astype('uint8')
+
             else:
                 new_col = target_size
                 new_ro = int(np.ceil(ro / col * new_col))
-            data_reshaped = tf.image.resize(
-                img_array, size=[new_ro, new_col], method='bilinear')
-            data = data_reshaped.numpy().astype('uint8')
+                data_reshaped = tf.image.resize(
+                    img_array, size=[new_ro, new_col], method='bilinear')
+                data = data_reshaped.numpy().astype('uint8')
+                data = np.transpose(data, (1, 0, 2))
+
             img_image = Image.fromarray(data)
             img_image.save(dest_dir / Path(img_name))
 

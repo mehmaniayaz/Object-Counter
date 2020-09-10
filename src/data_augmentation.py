@@ -46,7 +46,6 @@ def stitch_all_images_in_two_folders(dir_1, dir_2, dir_target):
 
 def stitch_all_classes_in_root_directory(root_dir):
     """
-
     :param root_dir: Path directory which contains all classes
     :return: 
     """

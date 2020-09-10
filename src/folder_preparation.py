@@ -42,10 +42,6 @@ def empty_folder_duplicate(target_dir, dest_dir):
         os.mkdir(Path(dest_dir) / i)
 
 
-def move_images_to_train_valid_split_folders():
-    pass
-
-
 # Since resize_images moves images from one folder to another (as part of data size
 # reduction we keep it in the folder_preparation folder.
 def resize_images(target_dir, dest_dir, target_size=255, image_format='.png', img_ratio=1, img_list=[]):
@@ -80,6 +76,7 @@ def resize_images(target_dir, dest_dir, target_size=255, image_format='.png', im
             img_image = Image.fromarray(data)
             img_image.save(dest_dir / Path(img_name))
 
+
 def clean_list(img_list):
     """
     Take an img_list and make sure no hidden files ('.') or corrupt images are passed
@@ -91,7 +88,7 @@ def clean_list(img_list):
 
 
 def resize_and_move_images_to_train_val_folders(target_dir, dest_dir, split_ratio=0.1,
-                                                image_format='.png',target_size=255):
+                                                image_format='.png', target_size=255):
     """
     resize images and then move them to a dest_dir directorty where two train and validation
     subfolders exist
@@ -103,14 +100,16 @@ def resize_and_move_images_to_train_val_folders(target_dir, dest_dir, split_rati
     """
 
     empty_train_valid_split_directory(target_dir)
-    for sub_dir in os.listdir(target_dir):
-        all_imgs = os.listdir(target_dir/sub_dir)
-        train_list = random.sample(all_imgs, k=int((1-split_ratio) * len(all_imgs)))
+    clean_subdirs = clean_list(os.listdir(target_dir))
+    for sub_dir in clean_subdirs:
+        all_imgs = os.listdir(target_dir / sub_dir)
+        train_list = random.sample(all_imgs, k=int((1 - split_ratio) * len(all_imgs)))
         validation_list = [i for i in all_imgs if i not in train_list]
         train_list = clean_list(train_list)
         validation_list = clean_list(validation_list)
-        resize_images(target_dir=target_dir/sub_dir,dest_dir=dest_dir/Path('train')/sub_dir,target_size=target_size,
-                      image_format=image_format,img_list=train_list)
-        resize_images(target_dir=target_dir/sub_dir,dest_dir=dest_dir/Path('validation')/sub_dir,target_size=target_size,
-                      image_format=image_format,img_list=validation_list)
-
+        resize_images(target_dir=target_dir / sub_dir, dest_dir=dest_dir / Path('train') / sub_dir,
+                      target_size=target_size,
+                      image_format=image_format, img_list=train_list)
+        resize_images(target_dir=target_dir / sub_dir, dest_dir=dest_dir / Path('validation') / sub_dir,
+                      target_size=target_size,
+                      image_format=image_format, img_list=validation_list)

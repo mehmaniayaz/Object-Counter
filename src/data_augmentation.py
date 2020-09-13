@@ -5,7 +5,7 @@ from PIL import Image
 from numpy import asarray
 import numpy as np
 import random
-from keras.preprocessing.image import img_to_array
+from keras.preprocessing.image import img_to_array, ImageDataGenerator, load_img
 from src.folder_preparation import clean_list
 from tqdm import tqdm
 
@@ -64,3 +64,38 @@ def stitch_all_classes_in_root_directory(root_dir):
             if int(sub_dir1) + int(sub_dir2) <= np.max(list(map(int, sub_dirs))):
                 target_dir = root_dir / Path(str(int(sub_dir1) + int(sub_dir2)))
                 stitch_all_images_in_two_folders(path_sub_dir1, path_sub_dir2, target_dir)
+
+
+def auto_augment_classes_in_root_directory(root_dir):
+    """
+    :param root_dir: Path directory which conatains all classes
+    :return:
+    """
+    datagen = ImageDataGenerator(
+        rotation_range=40,
+        shear_range=0.2,
+        horizontal_flip=True,
+        vertical_flip=True,
+        brightness_range=[0.5, 1.5],
+        fill_mode='nearest')
+
+    all_classes = map(int, clean_list(os.listdir(root_dir)))
+    n_class_max = len(clean_list(os.listdir(root_dir / Path((str(np.max(all_classes)))))))
+
+    for class_id in range(np.min(all_classes),np.max(all_classes)):
+        print(class_id)
+        img_list = clean_list(os.listdir(root_dir / Path((str(class_id)))))
+        n_img_orig = len([x for x in img_list if 'stitched' not in x])
+        n_img_stitched = len([x for x in img_list if 'stitched' in x])
+        gen_dir = root_dir / Path((str(class_id)))
+        for index in clean_list(os.listdir(gen_dir)):
+            if 'stitched' not in index:
+                img = load_img(gen_dir / Path(index))
+                x = img_to_array(img)
+                x = x.reshape((1,) + x.shape)
+                i = 0
+                for batch in datagen.flow(x, batch_size=1,
+                                          save_to_dir=gen_dir, save_prefix='auto_'+index.split('.')[0]+'__', save_format='png'):
+                    i += 1
+                    if i > (n_class_max-n_img_stitched)//n_img_orig:
+                        break

@@ -54,9 +54,9 @@ def stitch_all_classes_in_root_directory(root_dir):
     # reminder that class names need to be numbers for this function to work
     sub_dirs = clean_list(os.listdir(root_dir))
 
-    for sub_dir1 in tqdm(sub_dirs):
+    for sub_dir1 in sub_dirs:
         path_sub_dir1 = root_dir / Path(sub_dir1)
-        for sub_dir2 in tqdm(sub_dirs):
+        for sub_dir2 in sub_dirs:
             print('sub_dir1: ', sub_dir1)
             print('sub_dir2: ', sub_dir2)
             print('------------------------')
@@ -79,7 +79,7 @@ def auto_augment_classes_in_root_directory(root_dir):
         brightness_range=[0.5, 1.5],
         fill_mode='nearest')
 
-    all_classes = map(int, clean_list(os.listdir(root_dir)))
+    all_classes = list(map(int, clean_list(os.listdir(root_dir))))
     n_class_max = len(clean_list(os.listdir(root_dir / Path((str(np.max(all_classes)))))))
 
     for class_id in range(np.min(all_classes),np.max(all_classes)):

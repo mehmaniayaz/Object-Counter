@@ -119,6 +119,7 @@ def dataframe_root_directory(root_dir):
         print(class_dir)
         img_list = clean_list(os.listdir(root_dir / Path(class_dir)))
         for img in img_list:
+            img_type="unrecognized"
             if ('stitched' not in img) and ('auto' not in img):
                 img_type = 'original'
             elif 'stitched' in img:

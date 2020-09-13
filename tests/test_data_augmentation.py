@@ -58,14 +58,19 @@ class TestDataAugmentation(unittest.TestCase):
         dir_2 = self.new_data_dir / Path('train/2')
         dir1_imgs = clean_list(os.listdir(dir_1))
         dir2_imgs = clean_list(os.listdir(dir_2))
-        self.assertEqual(len(dir2_imgs),len(dir1_imgs)*len(dir1_imgs)+len(dir1_imgs))
+        self.assertEqual(len(dir2_imgs), len(dir1_imgs) * len(dir1_imgs) + len(dir1_imgs))
         shutil.rmtree(self.new_data_dir)
-
 
     def test_auto_augment_classes_in_root_directory(self):
         stitch_all_classes_in_root_directory(root_dir=self.new_data_dir / Path('train'))
         auto_augment_classes_in_root_directory(root_dir=self.new_data_dir / Path('train'))
         shutil.rmtree(self.new_data_dir)
+        pass
+
+    def test_dataframe_root_directory(self):
+        stitch_all_classes_in_root_directory(root_dir=self.new_data_dir / Path('train'))
+        auto_augment_classes_in_root_directory(root_dir=self.new_data_dir / Path('train'))
+        df_class = dataframe_root_directory(root_dir=self.new_data_dir / Path('train'))
         pass
 
     def tearDown(self) -> None:

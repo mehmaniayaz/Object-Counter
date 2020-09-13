@@ -68,6 +68,8 @@ def stitch_all_classes_in_root_directory(root_dir):
 
 def auto_augment_classes_in_root_directory(root_dir):
     """
+    conduct an automatic data augmentation of the images in a root directory to compensate
+    for the class imbalance resulted from manual data augmentation
     :param root_dir: Path directory which conatains all classes
     :return:
     """
@@ -99,3 +101,10 @@ def auto_augment_classes_in_root_directory(root_dir):
                     i += 1
                     if i > (n_class_max-n_img_stitched)//n_img_orig:
                         break
+
+def dataframe_root_directory(root_dir):
+    """
+    return a dataframe that classifies all images in a root directory
+    :param root_dir:
+    :return: df_class
+    """

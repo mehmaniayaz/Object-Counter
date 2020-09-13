@@ -8,6 +8,7 @@ import random
 from keras.preprocessing.image import img_to_array, ImageDataGenerator, load_img
 from src.folder_preparation import clean_list
 from tqdm import tqdm
+import pandas as pd
 
 
 def stitch_two_images(image1, image2):
@@ -84,7 +85,7 @@ def auto_augment_classes_in_root_directory(root_dir):
     all_classes = list(map(int, clean_list(os.listdir(root_dir))))
     n_class_max = len(clean_list(os.listdir(root_dir / Path((str(np.max(all_classes)))))))
 
-    for class_id in range(np.min(all_classes),np.max(all_classes)):
+    for class_id in range(np.min(all_classes), np.max(all_classes)):
         print(class_id)
         img_list = clean_list(os.listdir(root_dir / Path((str(class_id)))))
         n_img_orig = len([x for x in img_list if 'stitched' not in x])
@@ -97,14 +98,32 @@ def auto_augment_classes_in_root_directory(root_dir):
                 x = x.reshape((1,) + x.shape)
                 i = 0
                 for batch in datagen.flow(x, batch_size=1,
-                                          save_to_dir=gen_dir, save_prefix='auto_'+index.split('.')[0]+'__', save_format='png'):
+                                          save_to_dir=gen_dir, save_prefix='auto_' + index.split('.')[0] + '__',
+                                          save_format='png'):
                     i += 1
-                    if i > (n_class_max-n_img_stitched)//n_img_orig:
+                    if i > (n_class_max - n_img_stitched) // n_img_orig:
                         break
+
 
 def dataframe_root_directory(root_dir):
     """
     return a dataframe that classifies all images in a root directory
-    :param root_dir:
+    :param root_dir: Path to directorty that has class directories with three image types in them:
+    stitched: manual images resulted from stitching together images from "smaller numbered" folders
+    auto: additional images created from auto-generating images inside each class
     :return: df_class
     """
+    class_dirs = clean_list(os.listdir(root_dir))
+    df_class = pd.DataFrame(columns=['image_name', 'class', 'type'])
+    for class_dir in class_dirs:
+        print(class_dir)
+        img_list = clean_list(os.listdir(root_dir / Path(class_dir)))
+        for img in img_list:
+            if ('stitched' not in img) and ('auto' not in img):
+                img_type = 'original'
+            elif 'stitched' in img:
+                img_type = 'stitched'
+            elif 'auto' in img:
+                img_type = 'automatic'
+            df_class = df_class.append({'image_name': img,'class': class_dir, 'type': img_type}, ignore_index=True)
+            return df_class

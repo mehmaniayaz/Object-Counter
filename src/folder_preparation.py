@@ -93,19 +93,19 @@ def clean_list(img_list):
     return img_list
 
 
-def resize_and_move_images_to_train_val_folders(target_dir, dest_dir, split_ratio=0.1,
+def resize_and_move_images_to_train_val_folders(target_dir, split_ratio=0.1,
                                                 image_format='.png', target_size=255):
     """
     resize images and then move them to a dest_dir directorty where two train and validation
     subfolders exist
     :param image_format:
     :param target_dir: directory from each data is supposed to be extracted
-    :param dest_dir: directory to which data is supposed to be moved
     :param split_ratio: validation to training ratio size (for each class independently implemented)
     :return: 
     """
 
     empty_train_valid_split_directory(target_dir)
+    dest_dir = Path('split_'+target_dir.name)
     clean_subdirs = clean_list(os.listdir(target_dir))
     for sub_dir in clean_subdirs:
         all_imgs = os.listdir(target_dir / sub_dir)

@@ -127,4 +127,4 @@ def dataframe_root_directory(root_dir):
             elif 'auto' in img:
                 img_type = 'automatic'
             df_class = df_class.append({'image_name': img,'class': class_dir, 'type': img_type}, ignore_index=True)
-            return df_class
+    return df_class

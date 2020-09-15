@@ -1,8 +1,9 @@
 # Table of Contents
 1. [Motivation](#motivation)
 2. [Data Augmentation Methods](#augmentation)
-3. [Results](#results)
-4. [Conclusions](#conclusions)
+3. [Model Description](#model_description)
+4. [Results](#results)
+5. [Conclusions](#conclusions)
 
 ## Motivation <a name="motivation"></a>
 In this project, we are interested in building a neural network model that counts the number of objects in a picture. 
@@ -35,6 +36,8 @@ Figure 1:Image of oranges for class 8: original (a-left), manual (b-middle), aut
 <img src="./disp-images/count_bar.png" width="80%"/>
 
 Figure 2: Count bar for the final dataset. Notice that class imbalanced has been compensated with automatic image generation.
+
+## Model Description <a name="model_description"></a>
 
 ## Results <a name="results"></a>
 We visualize the model's training and validation accuracy by plotting confusion matrices for both datasets (Figure3).

@@ -39,7 +39,8 @@ Figure 2: Count bar for the final dataset. Notice that class imbalanced has been
 ## Results <a name="results"></a>
 We visualize the model's training and validation accuracy by plotting confusion matrices for both datasets. 
 
-<img src="./disp-images/validation_confusionMatrix.png " width="50%"/>
+<img src="./disp-images/training_confusionMatrix.png " width="40%"/>
+<img src="./disp-images/validation_confusionMatrix.png " width="40%"/>
 
 Figure 3: Confusion matrices for training (a-left) and validation (b-right) sets.
 

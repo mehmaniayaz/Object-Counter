@@ -47,3 +47,7 @@ Figure 5: Activation filter visualization.
 Figure 6: Feature map visualization.
 
 ## Conclusions <a name="conclusions"></a>
+We demonstrate that through a combination of manual and automatic data augmentation, accuracy of training and 
+validation set can go up to X%. This is in contrast to a purely automatic augmentation method where the 
+accuracy increases to x%. Future work will include an examination of non-ideal backgrounds and mixture of objects
+of different kinds. 

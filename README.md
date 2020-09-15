@@ -60,13 +60,13 @@ parameters in a layer, and using a regularization parameter did not improve the 
 
 Figure 4: History of training and validation loss and accuracy for various counter measures.
 
-Figure 5 shows the activation filters for the first layer. We notice tha the kernel appears to detect
-the light gradient across all directions uniformly which is consistent with our random data acquisition.
-Figure 6 shows a foreground to background capturing of image filters through the neural network. Where
+Figure 5 shows the activation filters for the first layer. We notice that the kernel appears to detect
+the light gradient across all directions uniformly, which is consistent with our random data acquisition.
+In Figure 6 we see that layers tend to caoture image properties from foreground to background as they go deeper. Where
 first layers attempts to capture the finer image properties related to the oranges and the last
-layer focuses on coarser and relatively background-related properties. That said, interepreting 
-activation filters and feature maps are very difficult and the plotting is done to obtain qualitative
-insight on the model's training.
+layer focuses on coarser and relatively background-related properties. That said, interpreting 
+activation filters and feature maps are generally difficult and the plotting is done to obtain qualitative
+insights on the model's training.
 
 
 

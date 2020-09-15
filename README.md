@@ -22,9 +22,9 @@ comprises of image rotation, brightness manipulation, image flipping, and sheari
 sizes are standardized, it gives the model cases with different orange sizes in a picture to learn. It furthermore, does not rely on 
 image manipulation rules that the model can potentially pick up on when building  a large dataset.
 
-![alt](./disp-images/orig_IMG_6133.png "Original")
-![alt](./disp-images/stitched_IMG_7024__IMG_6512.png "Manual")
-![alt](./disp-images/auto_IMG_6133___0_379.png "Autoamtic")
+![original](./disp-images/orig_IMG_6133.png "Original")
+![manual](./disp-images/stitched_IMG_7024__IMG_6512.png "Manual")
+![automatic](./disp-images/auto_IMG_6133___0_379.png "Autoamtic")
 
 Figure 1:Image of oranges for class 8: original (left), manual (middle), automatic (right).
 

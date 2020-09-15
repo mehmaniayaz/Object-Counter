@@ -29,3 +29,8 @@ image manipulation rules that the model can potentially pick up on when building
 
 Figure 1:Image of oranges for class 8: original (a-left), manual (b-middle), automatic (c-right).
 
+
+
+![count bar](./disp-images/count_bar.png "Autoamtic")
+
+Figure 2: Count bar for the final dataset. Notice that class imbalanced has been compensated with automatic image generation.

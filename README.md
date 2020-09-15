@@ -31,6 +31,6 @@ Figure 1:Image of oranges for class 8: original (a-left), manual (b-middle), aut
 
 
 
-<img src="./disp-images/count_bar.png" width="50%"/>
+<img src="./disp-images/count_bar.png" width="80%"/>
 
 Figure 2: Count bar for the final dataset. Notice that class imbalanced has been compensated with automatic image generation.

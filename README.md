@@ -43,9 +43,19 @@ We visualize the model's training and validation accuracy by plotting confusion 
 
 Figure 3: Confusion matrices for training (a-left) and validation (b-right) sets.
 
+
+<img src="./disp-images/training_validation_accuracy.png " width="50%"/>
+
 Figure 4: History of training and validation loss and accuracy for various counter measures.
 
+<img src="./disp-images/activation_filters.png " width="50%"/>
+
 Figure 5: Activation filter visualization.
+
+<img src="./disp-images/sample_image.png " width="20%"/>
+<img src="./disp-images/feature_visualization1.png " width="20%"/>
+<img src="./disp-images/feature_visualization2.png " width="20%"/>
+<img src="./disp-images/feature_visualization3.png " width="20%"/>
 
 Figure 6: Feature map visualization.
 

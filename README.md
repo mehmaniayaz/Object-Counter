@@ -1,14 +1,14 @@
 # Table of Contents
-1. [Motivation](#Motivation)
-2. [Data Augmentation Methods](#Data Augmentation Methods)
+1. [Motivation](#motivation)
+2. [Data Augmentation Methods](#augmentation)
 
-## Motivation <a name="Motivation"></a>
+## Motivation <a name="motivation"></a>
 In this project, we are interested in building a neural network model that counts the number of objects in a picture. 
 The user can gather their own images with a cell phone and augment them with the pipeline discussed in this project. Currently, we have focused 
 on oranges in a relatively plain background. The project can be extended to incorporate more complex backgrounds and 
 mixture of objects. 
 
-## Data Augmentation Methods <a name="Data Augmentation Methods"></a>
+## Data Augmentation Methods <a name="augmentation"></a>
 Our project addresses an image classification task with 10 classes. We start with about 100 cellphone images that we have gathered for each class. 
 The initial dataset is extremely insufficient for the model to detect the differences
 between 3 versus 4 oranges in a picture. To remediate this deficiency, we first conduct a "manual" augmentation technique

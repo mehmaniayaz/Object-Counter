@@ -63,6 +63,8 @@ Figure 4: History of training and validation loss and accuracy for various count
 
 
 
+
+
 <img src="./disp-images/activation_filters.png " width="50%"/>
 
 Figure 5: Activation filter visualization.

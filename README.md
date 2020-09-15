@@ -49,10 +49,10 @@ is due to model's inherent bias with the current dataset.
 
 Figure 3: Confusion matrices for training (a-left) and validation (b-right) sets.
 
-The history of the model's training is shown in Figure 4. We observe that the training accuracy reaches excellent accuracy
-in the first epoch where as the validation accuracy drop from 70% to just above 60%. The model therefore demonstrates considerable
+The history of the model's training is shown in Figure 4. We observe that the training accuracy is excellent even
+in the first epoch whereas the validation accuracy drops from 70% to just above 60%. The model therefore demonstrates considerable
 overfitting. However, reducing the model's complexity (using a shallower network with smaller number of parameters), droping out
-parameters in a layer, and using a regularization parameter did not improve the validation sets accuracy above 70%.
+parameters in a layer, and using a regularization parameter did not improve the validation accuracy above 70%.
 
 
 
@@ -61,7 +61,13 @@ parameters in a layer, and using a regularization parameter did not improve the 
 
 Figure 4: History of training and validation loss and accuracy for various counter measures.
 
-
+Figure 5 shows the activation filters for the first layer. We notice tha the kernel appears to detect
+the light gradient across all directions uniformly which is consistent with our random data acquisition.
+Figure 6 shows a foreground to background capturing of image filters through the neural network. Where
+first layers attempts to capture the finer image properties related to the oranges and the last
+layer focuses on coarser and relatively background-related properties. That said, interepreting 
+activation filters and feature maps are very difficult and the plotting is done to obtain qualitative
+insight on the model's training.
 
 
 

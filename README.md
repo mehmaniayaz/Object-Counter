@@ -37,17 +37,31 @@ Figure 1:Image of oranges for class 8: original (a-left), manual (b-middle), aut
 Figure 2: Count bar for the final dataset. Notice that class imbalanced has been compensated with automatic image generation.
 
 ## Results <a name="results"></a>
-We visualize the model's training and validation accuracy by plotting confusion matrices for both datasets. 
+We visualize the model's training and validation accuracy by plotting confusion matrices for both datasets (Figure3).
+The training confusion matrix demonstrates considerable consistency for the accuracy of each class. This is in contrast
+to the confusion matrix of the validation set that where, model's accuracy drops as number of oranges drops. A peculiar
+mismatch is class 2 where all images are misclassified as class 10. I couldn't discover similarities between class 2 and class 10,
+and despite running the model repeatedly and obtaining the same misclassification, I am left to determine that this issue
+is due to model's inherent bias with the current dataset. 
 
 <img src="./disp-images/training_confusionMatrix.png " width="40%"/>
 <img src="./disp-images/validation_confusionMatrix.png " width="40%"/>
 
 Figure 3: Confusion matrices for training (a-left) and validation (b-right) sets.
 
+The history of the model's training is shown in Figure 4. We observe that the training accuracy reaches excellent accuracy
+in the first epoch where as the validation accuracy drop from 70% to just above 60%. The model therefore demonstrates considerable
+overfitting. However, reducing the model's complexity (using a shallower network with smaller number of parameters), droping out
+parameters in a layer, and using a regularization parameter did not improve the validation sets accuracy above 70%.
+
+
+
 
 <img src="./disp-images/training_validation_accuracy.png " width="50%"/>
 
 Figure 4: History of training and validation loss and accuracy for various counter measures.
+
+
 
 <img src="./disp-images/activation_filters.png " width="50%"/>
 

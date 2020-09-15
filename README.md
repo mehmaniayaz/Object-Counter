@@ -44,8 +44,7 @@ mismatch is class 2 where all images are misclassified as class 10. I couldn't d
 and despite running the model repeatedly and obtaining the same misclassification, I am left to determine that this issue
 is due to model's inherent bias with the current dataset. 
 
-<img src="./disp-images/training_confusionMatrix.png " width="25%"/>
-<img src="./disp-images/validation_confusionMatrix.png " width="25%"/>
+<img src="./disp-images/training_confusionMatrix.png " width="45%"/> <img src="./disp-images/validation_confusionMatrix.png " width="45%"/>
 
 Figure 3: Confusion matrices for training (a-left) and validation (b-right) sets.
 
@@ -71,14 +70,11 @@ insight on the model's training.
 
 
 
-<img src="./disp-images/activation_filters.png " width="50%"/>
+<img src="./disp-images/activation_filters.png " width="80%"/>
 
 Figure 5: Activation filter visualization.
 
-<img src="./disp-images/sample_image.png " width="50%"/>
-<img src="./disp-images/feature_visualization1.png " width="50%"/>
-<img src="./disp-images/feature_visualization2.png " width="50%"/>
-<img src="./disp-images/feature_visualization3.png " width="50%"/>
+<img src="./disp-images/sample_image.png " width="30%"/> <img src="./disp-images/feature_visualization1.png " width="30%"/> <img src="./disp-images/feature_visualization2.png " width="30%"/> <img src="./disp-images/feature_visualization3.png " width="30%"/>
 
 Figure 6: Feature map visualization.
 

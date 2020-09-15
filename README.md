@@ -44,8 +44,7 @@ mismatch is class 2 where all images are misclassified as class 10. I couldn't d
 and despite running the model repeatedly and obtaining the same misclassification, I am left to determine that this issue
 is due to model's inherent bias with the current dataset. 
 
-<img src="./disp-images/training_confusionMatrix.png " width="5%"/>
-<img src="./disp-images/validation_confusionMatrix.png " width="5%"/>
+<img src="./disp-images/training_confusionMatrix.png " width="45%"/> <img src="./disp-images/validation_confusionMatrix.png " width="45%"/>
 
 Figure 3: Confusion matrices for training (a-left) and validation (b-right) sets.
 

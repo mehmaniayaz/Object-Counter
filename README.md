@@ -21,7 +21,7 @@ than there are for class 2).
 
 We subsequently compensate for the class imbalance by creating additional images using an "automatic" approach. The automatic approach 
 comprises of image rotation, brightness manipulation, image flipping, and shearing (Figure 1c). The advantage of the manual method is that, once image
-sizes are standardized, it gives the model cases with different orange sizes in a picture to learn. It furthermore, does not rely on 
+sizes are standardized, it gives the model cases with different orange sizes in a picture. It furthermore, does not rely on 
 image manipulation rules that the model can potentially pick up on when building  a large dataset.
 
 ![original](./disp-images/orig_IMG_6133.png "Original")

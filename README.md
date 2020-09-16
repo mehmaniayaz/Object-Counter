@@ -8,7 +8,7 @@
 ## Motivation <a name="motivation"></a>
 In this project, we are interested in building a neural network model that counts the number of objects in a picture. 
 The user can gather their own images with a cell phone and augment them with the pipeline discussed in this project. Currently, we have focused 
-on oranges in a relatively plain background. The project can be extended to incorporate more complex backgrounds and 
+on oranges in a relatively plain background as an example. The project can be extended to incorporate more complex backgrounds and 
 mixture of objects. 
 
 ## Data Augmentation Methods <a name="augmentation"></a>
@@ -38,6 +38,11 @@ Figure 1:Image of oranges for class 8: original (a-left), manual (b-middle), aut
 Figure 2: Count bar for the final dataset. Notice that class imbalanced has been compensated with automatic image generation.
 
 ## Model Description <a name="model_description"></a>
+We build a a shallow neural network model (Figure 3) that comprises of three convolutional layers followed up
+by max pooling to capture the most distinct elements in each feature map. The parameters are then flattened and 
+reduced in dimensionality to an array of 10 (number of classes). We use Adam optimizer and a sparse categorical
+cross entropy (as our classes are mutually exclusive).
+
 
 <img src="./disp-images/architecture.png" width=70%>
 

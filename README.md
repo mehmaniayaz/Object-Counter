@@ -39,7 +39,7 @@ Figure 2: Count bar for the final dataset. Notice that class imbalanced has been
 
 ## Model Description <a name="model_description"></a>
 
-<img src="./disp-images/architecture.png" height=10%>
+<img src="./disp-images/architecture.png" width=50%>
 
 Figure 3: Visualization of model architecture.
 

@@ -39,6 +39,8 @@ Figure 2: Count bar for the final dataset. Notice that class imbalanced has been
 
 ## Model Description <a name="model_description"></a>
 
+<img src="./disp-images/network.gv.pdf" width=50%>
+
 ## Results <a name="results"></a>
 We visualize the model's training and validation accuracy by plotting confusion matrices for both datasets (Figure :3).
 The training confusion matrix demonstrates considerable consistency for the accuracy of each class. This is in contrast

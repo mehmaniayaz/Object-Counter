@@ -105,6 +105,38 @@ def auto_augment_classes_in_root_directory(root_dir):
                         break
 
 
+def auto_augment_single_class(root_dir, dn):
+    '''
+    Increase number of images in a given class using automatic augmentation
+    :param root_dir: directory of a single class
+    :param dn: number of augmented images to add
+    :return:
+    '''
+
+    datagen = ImageDataGenerator(
+        rotation_range=40,
+        shear_range=0.2,
+        horizontal_flip=True,
+        vertical_flip=True,
+        brightness_range=[0.5, 1.5],
+        fill_mode='nearest')
+
+    img_list = clean_list(os.listdir(root_dir))
+    n_img_orig = len([x for x in img_list if 'stitched' not in x])
+    for index in clean_list(os.listdir(root_dir)):
+        if 'stitched' not in index:
+            img = load_img(root_dir / Path(index))
+            x = img_to_array(img)
+            x = x.reshape((1,) + x.shape)
+            i = 0
+            for batch in datagen.flow(x, batch_size=1,
+                                      save_to_dir=root_dir, save_prefix='auto_' + index.split('.')[0] + '__',
+                                      save_format='png'):
+                i += 1
+                if i > dn // n_img_orig:
+                    break
+
+
 def dataframe_root_directory(root_dir):
     """
     return a dataframe that classifies all images in a root directory
@@ -119,12 +151,12 @@ def dataframe_root_directory(root_dir):
         print(class_dir)
         img_list = clean_list(os.listdir(root_dir / Path(class_dir)))
         for img in img_list:
-            img_type="unrecognized"
+            img_type = "unrecognized"
             if ('stitched' not in img) and ('auto' not in img):
                 img_type = 'original'
             elif 'stitched' in img:
                 img_type = 'stitched'
             elif 'auto' in img:
                 img_type = 'automatic'
-            df_class = df_class.append({'image_name': img,'class': class_dir, 'type': img_type}, ignore_index=True)
+            df_class = df_class.append({'image_name': img, 'class': class_dir, 'type': img_type}, ignore_index=True)
     return df_class

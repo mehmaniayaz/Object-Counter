@@ -28,7 +28,7 @@ image manipulation rules that the model can potentially pick up on when building
 ![manual](./disp-images/stitched_IMG_7024__IMG_6512.png "Manual")
 ![automatic](./disp-images/auto_IMG_6133___0_379.png "Autoamtic")
 
-Figure 1: Image of oranges for class 8: original (a-left), manual (b-middle), automatic (c-right).
+Figure 1: Images of oranges for class 8: original (a-left), manual (b-middle), automatic (c-right).
 
 
 

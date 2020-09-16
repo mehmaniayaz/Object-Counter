@@ -50,9 +50,9 @@ Figure 3: Visualization of model architecture.
 ## Results <a name="results"></a>
 We visualize the model's training and validation accuracy by plotting confusion matrices for both datasets (Figure 4).
 The training confusion matrix demonstrates considerable consistency for the accuracy of each class. This is in contrast
-to the confusion matrix of the validation set that where, model's accuracy drops as number of oranges drops. A peculiar
-mismatch is class 2 where all images are misclassified as class 10. I couldn't discover similarities between class 2 and class 10,
-and despite running the model repeatedly and obtaining the same misclassification, I am left to determine that this issue
+to the confusion matrix of the validation set where, model's accuracy drops as number of oranges drops. A peculiar
+mismatch in the validation set is class 2 where all images are misclassified as class 10. I couldn't discover similarities between class 2 and class 10 in the original
+and augmented datasets, and despite running the model repeatedly and obtaining the same misclassification, I am left to determine that this issue
 is due to model's inherent bias with the current dataset. 
 
 <img src="./disp-images/training_confusionMatrix.png " width="45%"/> <img src="./disp-images/validation_confusionMatrix.png " width="45%"/>

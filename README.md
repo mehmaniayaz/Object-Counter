@@ -60,7 +60,7 @@ is due to model's inherent bias with the current dataset.
 Figure 4: Confusion matrices for training (a-left) and validation (b-right) sets.
 
 The history of the model's training is shown in Figure 5. We observe that the training accuracy is excellent even
-in the first epoch whereas the validation accuracy drops from 70% to just above 60%. The model therefore demonstrates considerable
+in the first epoch whereas the validation accuracy drops from 70% to just above 65%. The model therefore demonstrates considerable
 overfitting. However, reducing the model's complexity (using a shallower network with smaller number of parameters), droping out
 parameters in a layer, and using a regularization parameter did not improve the validation accuracy above 70%.
 

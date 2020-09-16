@@ -92,9 +92,8 @@ Figure 7: Three sets of feature map visualization - from left to right, and top 
 the reduction of resolution did not incur considerbale bias to our model.  
 
 ## Conclusions <a name="conclusions"></a>
-We demonstrate that through a combination of manual and automatic data augmentation, accuracy of training and 
-validation set can go up to X%. This is in contrast to a purely automatic augmentation method where the 
-accuracy increases to x%. Future work will include an examination of non-ideal backgrounds and mixture of objects
+We demonstrate that, even with a small data sample of 100 images per class, through a combination of manual and automatic data augmentation, accuracy of training and 
+validation set can go up to 95% and 65% respectively. Future work will include an examination of non-ideal backgrounds and mixture of objects
 of different kinds. 
 
 ## Dataset <a name="dataset"></a>

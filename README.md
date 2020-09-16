@@ -79,7 +79,8 @@ Figure 5: Activation filter visualization.
 
 <img src="./disp-images/sample_image.png " width="30%"/> <img src="./disp-images/feature_visualization1.png " width="30%"/> <img src="./disp-images/feature_visualization2.png " width="30%"/> <img src="./disp-images/feature_visualization3.png " width="30%"/>
 
-Figure 6: Feature map visualization.
+Figure 6: Feature map visualization. Notice that we have reduced the resolution of images to reduce computational overload. Interestingly,
+the reduction of resolution did not incur considerbale bias to our model.  
 
 ## Conclusions <a name="conclusions"></a>
 We demonstrate that through a combination of manual and automatic data augmentation, accuracy of training and 

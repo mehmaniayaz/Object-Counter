@@ -97,5 +97,5 @@ validation set can go up to X%. This is in contrast to a purely automatic augmen
 accuracy increases to x%. Future work will include an examination of non-ideal backgrounds and mixture of objects
 of different kinds. 
 
-## Link to Dataset
-https://www.dropbox.com/sh/r7oat9rxa5mial8/AADooTLZg25x3SLZPRXpHpvDa?dl=0
+## Link to Dataset <a name="dataset"></a>
+You can find the data [here](https://www.dropbox.com/sh/r7oat9rxa5mial8/AADooTLZg25x3SLZPRXpHpvDa?dl=0.)

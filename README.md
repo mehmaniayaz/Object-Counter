@@ -4,7 +4,7 @@
 3. [Model Description](#model_description)
 4. [Results](#results)
 5. [Conclusions](#conclusions)
-6. [Link to Dataset](#dataset)
+6. [Dataset](#dataset)
 
 ## Motivation <a name="motivation"></a>
 In this project, we are interested in building a neural network model that counts the number of objects in a picture. 
@@ -97,5 +97,5 @@ validation set can go up to X%. This is in contrast to a purely automatic augmen
 accuracy increases to x%. Future work will include an examination of non-ideal backgrounds and mixture of objects
 of different kinds. 
 
-## Link to Dataset <a name="dataset"></a>
-You can find the data [here](https://www.dropbox.com/sh/r7oat9rxa5mial8/AADooTLZg25x3SLZPRXpHpvDa?dl=0.)
+## Dataset <a name="dataset"></a>
+You can find the data [here](https://www.dropbox.com/sh/r7oat9rxa5mial8/AADooTLZg25x3SLZPRXpHpvDa?dl=0.).

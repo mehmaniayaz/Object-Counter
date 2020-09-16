@@ -92,9 +92,9 @@ Figure 7: Three sets of feature map visualization - from left to right, and top 
 the reduction of resolution did not incur considerbale bias to our model.  
 
 ## Conclusions <a name="conclusions"></a>
-We demonstrate that, even with a small data sample of 100 images per class, through a combination of manual and automatic data augmentation, accuracy of training and 
+We demonstrate that, even with a small data sample of about 100 images per class, through a combination of manual and automatic data augmentation, accuracy of training and 
 validation set can go up to 95% and 65% respectively. Future work will include an examination of non-ideal backgrounds and mixture of objects
-of different kinds. 
+of different kind. 
 
 ## Dataset <a name="dataset"></a>
 You can find the data [here](https://www.dropbox.com/sh/r7oat9rxa5mial8/AADooTLZg25x3SLZPRXpHpvDa?dl=0.).

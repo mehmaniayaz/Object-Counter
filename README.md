@@ -40,7 +40,7 @@ Figure 2: Count bar for the final dataset. Notice that class imbalanced has been
 We build a a shallow neural network model (Figure 3) that comprises of three convolutional layers followed up
 by max pooling to capture the most distinct elements in each feature map. The parameters are then flattened and 
 reduced in dimensionality to an array of 10 (number of classes). We use Adam optimizer and a sparse categorical
-cross entropy (as our classes are mutually exclusive).
+cross entropy (as our classes are mutually exclusive) to fit the model.
 
 
 <img src="./disp-images/architecture.png" width=70%>

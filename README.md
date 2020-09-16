@@ -40,7 +40,7 @@ Figure 2: Count bar for the final dataset. Notice that class imbalanced has been
 ## Model Description <a name="model_description"></a>
 
 ## Results <a name="results"></a>
-We visualize the model's training and validation accuracy by plotting confusion matrices for both datasets (Figure3).
+We visualize the model's training and validation accuracy by plotting confusion matrices for both datasets (Figure :3).
 The training confusion matrix demonstrates considerable consistency for the accuracy of each class. This is in contrast
 to the confusion matrix of the validation set that where, model's accuracy drops as number of oranges drops. A peculiar
 mismatch is class 2 where all images are misclassified as class 10. I couldn't discover similarities between class 2 and class 10,

@@ -39,7 +39,7 @@ Figure 2: Count bar for the final dataset. Notice that class imbalanced has been
 
 ## Model Description <a name="model_description"></a>
 
-<img src="./disp-images/network.gv.pdf" width=50%>
+<img src="./disp-images/architecture.png" height=10%>
 
 ## Results <a name="results"></a>
 We visualize the model's training and validation accuracy by plotting confusion matrices for both datasets (Figure :3).

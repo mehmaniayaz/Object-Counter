@@ -12,7 +12,7 @@ on oranges in a relatively plain background as an example. The project can be ex
 mixture of objects. 
 
 ## Data Augmentation Methods <a name="augmentation"></a>
-Our project addresses an image classification task with 10 classes. We start with about 100 cellphone images that we have gathered 
+Our project addresses an image classification task with 10 classes. We start with about 100 cellphone images
 for each class (Figure 1a). The initial dataset is extremely insufficient for the model to detect the differences
 between 3 versus 4 oranges in a picture. To remediate this deficiency, we first conduct a "manual" augmentation technique
 by stitching two images together and placing it in the appropriate class (Figure 1b). For instance, if we stitch an image from class 1
